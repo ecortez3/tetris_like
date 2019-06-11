@@ -1,7 +1,5 @@
 package cortez.personal;
 
-import cortez.personal.shapes.Shapes;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

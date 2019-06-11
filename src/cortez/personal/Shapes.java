@@ -1,4 +1,4 @@
-package cortez.personal.shapes;
+package cortez.personal;
 
 public class Shapes {
 
