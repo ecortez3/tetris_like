@@ -36,9 +36,9 @@ public class Main {
 
         for(String sequence : gameSequences){
             if(sequence.length() <= 2) {
+                System.out.println("Playing sequence: " + sequence);
                 int height = game.playNewGame(sequence);
                 System.out.println("This is " + height + " rows high");
-                break;
             }
         }
 

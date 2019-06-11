@@ -34,7 +34,7 @@ class TetrisGame {
                 insertSuccessful = insertNewRow(coordinates[i], row, start);
                 row++;
             }
-            row++;
+//            row++;
 
         }
 
@@ -51,6 +51,21 @@ class TetrisGame {
     private boolean insertNewRow(int[] coordinate, int row, int start) {
         if(gameBoard.isEmpty() || gameBoard.size() <= row){
             gameBoard.add(new String[10]);
+//            this.gameBoard.get(row)[0] = "X";
+//            this.gameBoard.get(row)[1] = "X";
+//            this.gameBoard.get(row)[2] = "X";
+//            this.gameBoard.get(row)[3] = "X";
+//            this.gameBoard.get(row)[4] = "X";
+//            this.gameBoard.get(row)[5] = "X";
+//            this.gameBoard.get(row)[6] = "X";
+//            this.gameBoard.get(row)[7] = "X";
+//            this.gameBoard.get(row)[8] = "X";
+//            this.gameBoard.get(row)[9] = "X";
+            String[] gameRow = gameBoard.get(row);
+            for(int i = 0; i < coordinate.length; i++){
+                if(gameRow[i+start] != null && gameRow[i+start].equals("X"))
+                    return false;
+            }
         }
         else {
             String[] gameRow = gameBoard.get(row);
