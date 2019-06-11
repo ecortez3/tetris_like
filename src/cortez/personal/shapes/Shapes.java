@@ -2,22 +2,60 @@ package cortez.personal.shapes;
 
 public class Shapes {
 
+    private final static int[][] qShape = new int[][] {
+            { 0,1 },
+            { 0,1 }
+    };
+
+    private final static int[][] zShape = new int[][] {
+            { 0,1 },
+            { 1,2 }
+    };
+
+    private final static int [][] sShape = new int[][] {
+            { 1,2 },
+            { 0,1 }
+    };
+
+    private final static int[][] tShape = new int[][] {
+            { 0,1,2 },
+            { 1 }
+    };
+
+    private final static int[][] iShape = new int[][] {
+            { 0 },
+            { 0 },
+            { 0 }
+    };
+
+    private final static int[][] lShape = new int[][] {
+            { 0 },
+            { 0 },
+            { 0,1 }
+    };
+
+    private final static int[][] jShape = new int[][] {
+            { 1 },
+            { 1 },
+            { 0,1 }
+    };
+
     public static int[][] getShapeCoordinates(String type) {
         switch (type){
             case "Q":
-                return QShape.getShape();
+                return qShape;
             case "Z":
-                return ZShape.getShape();
+                return zShape;
             case "S":
-                return SShape.getShape();
+                return sShape;
             case "T":
-                return TShape.getShape();
+                return tShape;
             case "I":
-                return IShape.getShape();
+                return iShape;
             case "L":
-                return LShape.getShape();
+                return lShape;
             default:
-                return JShape.getShape();
+                return jShape;
         }
     }
 }
