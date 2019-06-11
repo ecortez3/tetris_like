@@ -13,11 +13,10 @@ public class Main {
 
     public static void main(String[] args) {
         String inputFile = "C:\\Users\\Farside\\IdeaProjects\\JavaTetris\\src\\cortez\\personal\\input.txt";
-        List<String> gameList = new ArrayList<>();
+        List<String> gameList;
 
         BufferedReader bufferReader = null;
         try {
-
             // newBufferedReader opens a file for reading
             bufferReader = Files.newBufferedReader(Paths.get(inputFile));
 
@@ -25,23 +24,18 @@ public class Main {
             e.printStackTrace();
         }
 
+        // Current assumption is that file will not be empty thus avoiding NPE
         gameList = bufferReader.lines().collect(Collectors.toList());
 
         // full file is coming in as one single line
         String[] gameSequences = gameList.get(0).split(",");
 
-        Stream<String> stream2 = Stream.of(gameSequences);
-
         TetrisGame game = new TetrisGame();
 
         for(String sequence : gameSequences){
-            if(sequence.length() <= 2) {
-                System.out.println("Playing sequence: " + sequence);
-                int height = game.playNewGame(sequence);
-                System.out.println("This is " + height + " rows high");
-            }
+            System.out.println("Playing sequence: " + sequence);
+            int height = game.playNewGame(sequence);
+            System.out.println("This is " + height + " rows high");
         }
-
-
     }
 }

@@ -16,10 +16,23 @@ class TetrisGame {
     int playNewGame(String gameSequence){
         this.gameBoard = new ArrayList<>();
 
-        String type = Character.toString(gameSequence.charAt(0));
-        int start = Character.getNumericValue(gameSequence.charAt(1));
+        if(gameSequence.length() > 2) {
+            int shapesToInsert = gameSequence.length() / 2;
 
-        insertNewShape(type, start);
+            for(int i = 0; i <= shapesToInsert; i++){
+                String type = Character.toString(gameSequence.charAt(i));
+                int start = Character.getNumericValue(gameSequence.charAt(i+1));
+
+                insertNewShape(type, start);
+                i++;
+            }
+        }
+        else {
+            String type = Character.toString(gameSequence.charAt(0));
+            int start = Character.getNumericValue(gameSequence.charAt(1));
+
+            insertNewShape(type, start);
+        }
 
 
         return this.gameBoard.size();
@@ -51,33 +64,29 @@ class TetrisGame {
     private boolean insertNewRow(int[] coordinate, int row, int start) {
         if(gameBoard.isEmpty() || gameBoard.size() <= row){
             gameBoard.add(new String[10]);
-//            this.gameBoard.get(row)[0] = "X";
-//            this.gameBoard.get(row)[1] = "X";
-//            this.gameBoard.get(row)[2] = "X";
-//            this.gameBoard.get(row)[3] = "X";
-//            this.gameBoard.get(row)[4] = "X";
-//            this.gameBoard.get(row)[5] = "X";
-//            this.gameBoard.get(row)[6] = "X";
-//            this.gameBoard.get(row)[7] = "X";
-//            this.gameBoard.get(row)[8] = "X";
-//            this.gameBoard.get(row)[9] = "X";
-            String[] gameRow = gameBoard.get(row);
-            for(int i = 0; i < coordinate.length; i++){
-                if(gameRow[i+start] != null && gameRow[i+start].equals("X"))
-                    return false;
-            }
-        }
-        else {
-            String[] gameRow = gameBoard.get(row);
-            for(int i = 0; i < coordinate.length; i++){
-                if(gameRow[i+start].equals("X"))
-                    return false;
-            }
         }
 
-        for(int column : coordinate){
-            gameBoard.get(row)[column+start] = "X";
+        if(row == 0 && gameBoard.size() >= 2){
+            String[] gameRow = gameBoard.get(gameBoard.size()-1);
+            if (isCollisionDetected(coordinate, start, gameRow))
+                return false;
+        }
+
+        String[] gameRow = gameBoard.get(row);
+        if (isCollisionDetected(coordinate, start, gameRow))
+            return false;
+
+        for (int column : coordinate) {
+            gameBoard.get(row)[column + start] = "X";
         }
         return true;
+    }
+
+    private boolean isCollisionDetected(int[] coordinate, int start, String[] gameRow) {
+        for(int i = 0; i < coordinate.length; i++){
+            if(gameRow[i+start] != null && gameRow[i+start].equals("X"))
+                return true;
+        }
+        return false;
     }
 }
