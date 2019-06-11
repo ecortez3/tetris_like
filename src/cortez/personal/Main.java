@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) {
-        String inputFile = "C:\\Users\\Farside\\IdeaProjects\\JavaTetris\\input.txt";
+        String inputFile = "./../input.txt";
         List<String> gameList;
 
         BufferedReader bufferReader = null;
