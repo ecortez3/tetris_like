@@ -22,3 +22,9 @@ This will produce an output in the console, but more importantly, a file will be
 
 That file can be found in the `/target` directory.
 
+### Notes
+- This project was built using Java 8.
+- input.txt file location is hardcoded into Main.java as a relative location
+- Changing of input file location will require Main.java update and recompile
+
+
