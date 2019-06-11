@@ -1,6 +1,6 @@
-#Tetris-Like
+# Tetris-Like
 
-####How to run:
+#### How to run:
 NOTE: To run this program please ensure that the Java JDK is in your system PATH.
 
 In your desired directory run: `git clone https://github.com/ecortez3/tetris_like.git`
